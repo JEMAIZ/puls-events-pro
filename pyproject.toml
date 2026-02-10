@@ -1,0 +1,43 @@
+[project]
+name = "puls-events-pro"
+version = "2.0.0"
+description = "Système RAG professionnel pour événements culturels"
+authors = [
+    {name = "Zied Jemai", email = "zjemai@outlook.fr"}
+]
+requires-python = ">=3.12"
+license = {text = "MIT"}
+
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.3",
+    "anthropic>=0.18.1",
+    "langchain>=0.1.6",
+    "voyageai>=0.2.1",
+    "faiss-cpu>=1.7.4",
+    "sentence-transformers>=2.3.1",
+    "redis>=5.0.1",
+    "pandas>=2.1.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=rag --cov=api --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
